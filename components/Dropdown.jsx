@@ -2,6 +2,8 @@ import { useState } from 'react';
 
 function Dropdown({ options, value, onChange }) {
   const [show, setShow] = useState(false);
+  // console.log('options', options);
+  // console.log('value', value);
   return (
     <div>
       <button

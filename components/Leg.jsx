@@ -46,11 +46,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
           <p className='text-xs font-semibold my-1'>Simple Momentum</p>
           <div className='flex items-center space-x-2'>
             <Dropdown
-              value={state.simpleMomentum.type}
+              value={state.LegMomentum.Type}
               onChange={(value) =>
                 setState({
                   ...state,
-                  simpleMomentum: { ...state.simpleMomentum, type: value }
+                  LegMomentum: { ...state.LegMomentum, Type: value }
                 })
               }
               options={[
@@ -65,11 +65,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
               ]}
             />
             <Input
-              value={state.simpleMomentum.value}
+              value={state.LegMomentum.Value}
               onChange={(value) =>
                 setState({
                   ...state,
-                  simpleMomentum: { ...state.simpleMomentum, value: value }
+                  LegMomentum: { ...state.LegMomentum, Value: value }
                 })
               }
             />
@@ -79,11 +79,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
           <p className='text-xs font-semibold my-1'>Target Profit</p>
           <div className='flex items-center space-x-2'>
             <Dropdown
-              value={state.profitTarget.type}
+              value={state.LegTarget.Type}
               onChange={(value) =>
                 setState({
                   ...state,
-                  profitTarget: { ...state.profitTarget, type: value }
+                  LegTarget: { ...state.LegTarget, Type: value }
                 })
               }
               options={[
@@ -94,11 +94,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
               ]}
             />
             <Input
-              value={state.profitTarget.value}
+              value={state.LegTarget.Value}
               onChange={(value) =>
                 setState({
                   ...state,
-                  profitTarget: { ...state.profitTarget, value: value }
+                  LegTarget: { ...state.LegTarget, Value: value }
                 })
               }
             />
@@ -108,11 +108,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
           <p className='text-xs font-semibold my-1'>Stop Loss</p>
           <div className='flex items-center space-x-2'>
             <Dropdown
-              value={state.stopLoss.type}
+              value={state.LegStopLoss.Type}
               onChange={(value) =>
                 setState({
                   ...state,
-                  stopLoss: { ...state.stopLoss, type: value }
+                  LegStopLoss: { ...state.LegStopLoss, Type: value }
                 })
               }
               options={[
@@ -123,11 +123,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
               ]}
             />
             <Input
-              value={state.stopLoss.value}
+              value={state.LegStopLoss.Value}
               onChange={(value) =>
                 setState({
                   ...state,
-                  stopLoss: { ...state.stopLoss, value: value }
+                  LegStopLoss: { ...state.LegStopLoss, Value: value }
                 })
               }
             />
@@ -137,11 +137,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
           <p className='text-xs font-semibold my-1'>Trail SL</p>
           <div className='flex items-center space-x-2'>
             <Dropdown
-              value={state.trailSL.type}
+              value={state.LegTrailSL.Type}
               onChange={(value) =>
                 setState({
                   ...state,
-                  trailSL: { ...state.trailSL, type: value }
+                  LegTrailSL: { ...state.LegTrailSL, Type: value }
                 })
               }
               options={[
@@ -150,20 +150,26 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
               ]}
             />
             <Input
-              value={state.trailSL.value1}
+              value={state.LegTrailSL.Value.InstrumentMove}
               onChange={(value) =>
                 setState({
                   ...state,
-                  trailSL: { ...state.trailSL, value1: value }
+                  LegTrailSL: {
+                    ...state.LegTrailSL,
+                    Value: { ...state.LegTrailSL.Value, InstrumentMove: value }
+                  }
                 })
               }
             />
             <Input
-              value={state.trailSL.value2}
+              value={state.LegTrailSL.Value.StopLossMove}
               onChange={(value) =>
                 setState({
                   ...state,
-                  trailSL: { ...state.trailSL, value2: value }
+                  LegTrailSL: {
+                    ...state.LegTrailSL,
+                    Value: { ...state.LegTrailSL.Value, StopLossMove: value }
+                  }
                 })
               }
             />
@@ -173,11 +179,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
           <p className='text-xs font-semibold my-1'>Re-entry on Tgt</p>
           <div className='flex items-center space-x-2'>
             <Dropdown
-              value={state.rentrytgt.type}
+              value={state.LegReentryTP.Type}
               onChange={(value) =>
                 setState({
                   ...state,
-                  rentrytgt: { ...state.rentrytgt, type: value }
+                  LegReentryTP: { ...state.LegReentryTP, Type: value }
                 })
               }
               options={[
@@ -190,11 +196,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
               ]}
             />
             <Input
-              value={state.rentrytgt.value}
+              value={state.LegReentryTP.Value}
               onChange={(value) =>
                 setState({
                   ...state,
-                  rentrytgt: { ...state.rentrytgt, value: value }
+                  LegReentryTP: { ...state.LegReentryTP, Value: value }
                 })
               }
             />
@@ -204,11 +210,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
           <p className='text-xs font-semibold my-1'>Re-entry on SL</p>
           <div className='flex items-center space-x-2'>
             <Dropdown
-              value={state.rentrySL.type}
+              value={state.LegReentrySL.Type}
               onChange={(value) =>
                 setState({
                   ...state,
-                  rentrySL: { ...state.rentrySL, type: value }
+                  LegReentrySL: { ...state.LegReentrySL, Type: value }
                 })
               }
               options={[
@@ -221,11 +227,11 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
               ]}
             />
             <Input
-              value={state.rentrySL.value}
+              value={state.LegReentrySL.Value}
               onChange={(value) =>
                 setState({
                   ...state,
-                  rentrySL: { ...state.rentrySL, value: value }
+                  LegReentrySL: { ...state.LegReentrySL, Value: value }
                 })
               }
             />

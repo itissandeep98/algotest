@@ -5,24 +5,21 @@ import Options from 'components/Options';
 import { useState } from 'react';
 
 const initState = {
+  PositionType: 'SELL',
+  Lots: 0,
+  LegStopLoss: { Type: 'points', Value: 0 },
+  LegTarget: { Type: 'points', Value: 0 },
+  LegTrailSL: { Type: 'points', Value: { InstrumentMove: 0, StopLossMove: 0 } },
+  LegMomentum: { Type: 'pointsup', Value: 0 },
+  ExpiryKind: 'WEEKLY',
+  EntryType: 'EntryByStrikeType',
+  StrikeParameter: 'ATM',
+  LegReentrySL: { Type: 'reasap', Value: 0 },
+  LegReentryTP: { Type: 'reasap', Value: 0 },
+  InstrumentKind: 'CE',
+
   segment: 'options',
-  position: 'sell',
-  optionCall: 'call',
-  expiry: 'weekly',
-  strikeCriteria: 'type',
-  strikeType: 'atm',
-  ATMStrike: '+',
-  straddlePrice: 0,
-  premium: 0,
-  lowerRange: 0,
-  upperRange: 0,
-  lot: 0,
-  simpleMomentum: { type: 'pointsup', value: 0 },
-  profitTarget: { type: 'points', value: 0 },
-  stopLoss: { type: 'points', value: 0 },
-  trailSL: { type: 'points', value1: 0, value2: 0 },
-  rentrytgt: { type: 'reasap', value: 0 },
-  rentrySL: { type: 'reasap', value: 0 }
+  optionCall: 'CALL'
 };
 
 function Index() {
@@ -125,7 +122,7 @@ function Index() {
               <button
                 onClick={() => setShowData(!showData)}
                 className='bg-violet-900 px-6 rounded-lg py-2'>
-                {showData ? 'Show' : 'Hide'} Data
+                {!showData ? 'Show' : 'Hide'} Data
               </button>
             </div>
             {showData && (
