@@ -1,4 +1,4 @@
-Sitemap: https://domain.com/sitemap.xml
+Sitemap: https://algotest.itissandeep98.ml/sitemap.xml
 
 User-agent: *
 Allow: /*

@@ -1,11 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Dropdown({ options, value, onChange }) {
   const [show, setShow] = useState(false);
-  // console.log('options', options);
-  // console.log('value', value);
+  const ref = useRef(null);
+  useEffect(() => {
+    const listener = (event) => {
+      if (ref.current && event.target && ref.current.contains(event.target)) {
+        return;
+      }
+      setShow(false);
+    };
+
+    document.addEventListener('click', listener, { capture: true });
+    return () => {
+      document.removeEventListener('click', listener, { capture: true });
+    };
+  }, []);
   return (
-    <div>
+    <div ref={ref}>
       <button
         onClick={() => setShow(!show)}
         className='text-black  focus:ring-4 focus:outline-none  font-medium rounded-full text-sm px-4 py-2.5 text-center inline-flex items-center bg-gray-400 hover:bg-gray-700 hover:text-gray-300 focus:ring-gray-700'>

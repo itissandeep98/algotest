@@ -1,6 +1,14 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 import Input from './Input';
+import {
+  AdjustmentData,
+  ExpiryKindData,
+  OptionCallData,
+  PositionTypeData,
+  StrikeCriteriaData,
+  StrikeTypeData
+} from './OptionsList';
 
 function Options({ state, setState }) {
   return (
@@ -18,10 +26,7 @@ function Options({ state, setState }) {
           <Dropdown
             value={state.PositionType}
             onChange={(value) => setState({ ...state, PositionType: value })}
-            options={[
-              { value: 'SELL', label: 'Sell' },
-              { value: 'BUY', label: 'Buy' }
-            ]}
+            options={PositionTypeData}
           />
         </div>
         <div>
@@ -29,10 +34,7 @@ function Options({ state, setState }) {
           <Dropdown
             value={state.optionCall}
             onChange={(value) => setState({ ...state, optionCall: value })}
-            options={[
-              { value: 'CALL', label: 'Call' },
-              { value: 'PUT', label: 'Put' }
-            ]}
+            options={OptionCallData}
           />
         </div>
         <div>
@@ -40,10 +42,7 @@ function Options({ state, setState }) {
           <Dropdown
             value={state.ExpiryKind}
             onChange={(value) => setState({ ...state, ExpiryKind: value })}
-            options={[
-              { value: 'WEEKLY', label: 'Weekly' },
-              { value: 'MONTHLY', label: 'Monthly' }
-            ]}
+            options={ExpiryKindData}
           />
         </div>
         <div>
@@ -73,12 +72,7 @@ function Options({ state, setState }) {
                 });
               }
             }}
-            options={[
-              { value: 'EntryByStrikeType', label: 'Strike Type' },
-              { value: 'EntryByPremiumRange', label: 'Premium Range' },
-              { value: 'EntryByPremium', label: 'Closest Premium' },
-              { value: 'EntryByStraddleWidth', label: 'Straddle width' }
-            ]}
+            options={StrikeCriteriaData}
           />
         </div>
 
@@ -90,11 +84,7 @@ function Options({ state, setState }) {
               onChange={(value) =>
                 setState({ ...state, StrikeParameter: value })
               }
-              options={[
-                { value: 'ATM', label: 'ATM' },
-                { value: 'ITM', label: 'ITM' },
-                { value: 'OTM', label: 'OTM' }
-              ]}
+              options={StrikeTypeData}
             />
           </div>
         )}
@@ -157,10 +147,7 @@ function Options({ state, setState }) {
                   }
                 })
               }
-              options={[
-                { value: 'Plus', label: '+' },
-                { value: 'Minus', label: '-' }
-              ]}
+              options={AdjustmentData}
             />
             <p className='text-sm font-semibold my-1'> (</p>
 

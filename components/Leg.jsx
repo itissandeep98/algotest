@@ -1,7 +1,7 @@
-import React from 'react';
 import Dropdown from './Dropdown';
 import Input from './Input';
 import Options from './Options';
+import { MomentumData, ReentryData, SLData, TargetData } from './OptionsList';
 
 function Leg({ state, setState, handleDelete, handleCopy }) {
   return (
@@ -53,16 +53,7 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
                   LegMomentum: { ...state.LegMomentum, Type: value }
                 })
               }
-              options={[
-                { value: 'pointsup', label: 'Points Up' },
-                { value: 'pointsdown', label: 'Points Down' },
-                { value: 'percup', label: 'Percentage Up' },
-                { value: 'percdown', label: 'Percentage Down' },
-                { value: 'unpointsup', label: 'Underlying Points Up' },
-                { value: 'unpointsdown', label: 'Underlying Points Down' },
-                { value: 'unpercup', label: 'Underlying Percentage Up' },
-                { value: 'unpercdown', label: 'Underlying Percentage Down' }
-              ]}
+              options={MomentumData}
             />
             <Input
               value={state.LegMomentum.Value}
@@ -86,12 +77,7 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
                   LegTarget: { ...state.LegTarget, Type: value }
                 })
               }
-              options={[
-                { value: 'points', label: 'Points' },
-                { value: 'perc', label: 'Percentage' },
-                { value: 'unpoints', label: 'Underlying Points' },
-                { value: 'unperc', label: 'Underlying Percentage' }
-              ]}
+              options={TargetData}
             />
             <Input
               value={state.LegTarget.Value}
@@ -115,12 +101,7 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
                   LegStopLoss: { ...state.LegStopLoss, Type: value }
                 })
               }
-              options={[
-                { value: 'points', label: 'Points' },
-                { value: 'perc', label: 'Percentage' },
-                { value: 'unpoints', label: 'Underlying Points' },
-                { value: 'unperc', label: 'Underlying Percentage' }
-              ]}
+              options={TargetData}
             />
             <Input
               value={state.LegStopLoss.Value}
@@ -144,10 +125,7 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
                   LegTrailSL: { ...state.LegTrailSL, Type: value }
                 })
               }
-              options={[
-                { value: 'points', label: 'Points' },
-                { value: 'perc', label: 'Percentage' }
-              ]}
+              options={SLData}
             />
             <Input
               value={state.LegTrailSL.Value.InstrumentMove}
@@ -186,14 +164,7 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
                   LegReentryTP: { ...state.LegReentryTP, Type: value }
                 })
               }
-              options={[
-                { value: 'reasap', label: 'RE ASAP' },
-                { value: 'reasapback', label: 'RE ASAP BACK' },
-                { value: 'remom', label: 'RE MOMENTUM' },
-                { value: 'remomback', label: 'RE MOMENTUM BACK' },
-                { value: 'recost', label: 'RE COST' },
-                { value: 'recostback', label: 'RE COST BACK' }
-              ]}
+              options={ReentryData}
             />
             <Input
               value={state.LegReentryTP.Value}
@@ -217,14 +188,7 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
                   LegReentrySL: { ...state.LegReentrySL, Type: value }
                 })
               }
-              options={[
-                { value: 'reasap', label: 'RE ASAP' },
-                { value: 'reasapback', label: 'RE ASAP BACK' },
-                { value: 'remom', label: 'RE MOMENTUM' },
-                { value: 'remomback', label: 'RE MOMENTUM BACK' },
-                { value: 'recost', label: 'RE COST' },
-                { value: 'recostback', label: 'RE COST BACK' }
-              ]}
+              options={ReentryData}
             />
             <Input
               value={state.LegReentrySL.Value}

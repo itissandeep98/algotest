@@ -1,27 +1,25 @@
 import React from 'react';
 import Dropdown from './Dropdown';
 import Input from './Input';
+import { PositionTypeData } from './OptionsList';
 
 function Futures({ state, setState }) {
   return (
     <div>
       <div className='flex flex-wrap my-6 justify-center space-x-6'>
         <div>
-          <p>Total lot</p>
+          <p className='text-xs font-semibold my-1'>Total lot</p>
           <Input
-            value={state.lot}
-            onChange={(value) => setState({ ...state, lot: value })}
+            value={state.Lots}
+            onChange={(value) => setState({ ...state, Lots: value })}
           />
         </div>
         <div>
-          <p>Position</p>
+          <p className='text-xs font-semibold my-1'>Position</p>
           <Dropdown
-            value={state.position}
-            onChange={(value) => setState({ ...state, position: value })}
-            options={[
-              { value: 'sell', label: 'Sell' },
-              { value: 'buy', label: 'Buy' }
-            ]}
+            value={state.PositionType}
+            onChange={(value) => setState({ ...state, PositionType: value })}
+            options={PositionTypeData}
           />
         </div>
       </div>
