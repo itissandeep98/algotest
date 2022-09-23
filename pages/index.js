@@ -1,26 +1,44 @@
 import classNames from 'classnames';
 import Futures from 'components/Futures';
+import Leg from 'components/Leg';
 import Options from 'components/Options';
 import { useState } from 'react';
 
+const initState = {
+  segment: 'options',
+  position: 'sell',
+  optionCall: 'call',
+  expiry: 'weekly',
+  strikeCriteria: 'type',
+  strikeType: 'atm',
+  ATMStrike: '+',
+  straddlePrice: 0,
+  premium: 0,
+  lowerRange: 0,
+  upperRange: 0,
+  lot: 0
+};
+
 function Index() {
-  const [state, setState] = useState({
-    segment: 'options',
-    position: 'sell',
-    optionCall: 'call',
-    expiry: 'weekly',
-    strikeCriteria: 'type',
-    strikeType: 'atm',
-    ATMStrike: '+',
-    straddlePrice: 0,
-    premium: 0,
-    lowerRange: 0,
-    upperRange: 0,
-    lot: 0
-  });
+  const [state, setState] = useState(initState);
   const [show, setShow] = useState(false);
+  const [legs, setLegs] = useState([]);
+  const handleAddLeg = () => {
+    setLegs([...legs, state]);
+    setState(initState);
+  };
+  const handleCopy = (index) => {
+    setLegs([...legs.splice(0, index), legs[index], ...legs.splice(index)]);
+  };
+  const handleDelete = (index) => {
+    setLegs([...legs.splice(0, index), ...legs.splice(index + 1)]);
+  };
+  const handleUpdate = (index, data) => {
+    setLegs([...legs.splice(0, index), data, ...legs.splice(index + 1)]);
+  };
+
   return (
-    <div className='bg-gray-800 h-screen text-white p-10'>
+    <div className='bg-gray-800 min-h-screen text-white p-10'>
       <div className='flex justify-between my-2'>
         <h2 className='text-xl font-semibold'>Legs</h2>
         <button className='flex' onClick={() => setShow(true)}>
@@ -74,7 +92,9 @@ function Index() {
             )}
 
             <div className='flex justify-center space-x-4'>
-              <button className='bg-violet-900 px-6 py-1 rounded-full'>
+              <button
+                onClick={handleAddLeg}
+                className='bg-violet-900 px-6 py-1 rounded-full'>
                 Add Leg
               </button>
               <button
@@ -82,6 +102,17 @@ function Index() {
                 className='bg-gray-200 text-black px-6 py-1 rounded-full'>
                 Cancel
               </button>
+            </div>
+            <div className='flex flex-col space-y-6 my-4'>
+              {legs.map((leg, index) => (
+                <Leg
+                  key={index}
+                  state={leg}
+                  setState={(data) => handleUpdate(index, data)}
+                  handleCopy={() => handleCopy(index)}
+                  handleDelete={() => handleDelete(index)}
+                />
+              ))}
             </div>
           </>
         )}

@@ -3,13 +3,14 @@ import Dropdown from './Dropdown';
 import Input from './Input';
 
 function Options({ state, setState }) {
+  console.log(state);
   return (
     <div>
       <div className='flex flex-wrap my-6 justify-center space-x-6 gap-5'>
         <div>
           <p className='text-xs font-semibold my-1'>Total lot</p>
           <Input
-            value={state.lot}
+            value={state?.lot}
             onChange={(value) => setState({ ...state, lot: value })}
           />
         </div>
