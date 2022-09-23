@@ -3,7 +3,6 @@ import Dropdown from './Dropdown';
 import Input from './Input';
 
 function Options({ state, setState }) {
-  console.log(state);
   return (
     <div>
       <div className='flex flex-wrap my-6 justify-center space-x-6 gap-5'>

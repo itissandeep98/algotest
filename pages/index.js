@@ -28,13 +28,13 @@ function Index() {
     setState(initState);
   };
   const handleCopy = (index) => {
-    setLegs([...legs.splice(0, index), legs[index], ...legs.splice(index)]);
+    setLegs([...legs.slice(0, index), legs[index], ...legs.slice(index)]);
   };
   const handleDelete = (index) => {
-    setLegs([...legs.splice(0, index), ...legs.splice(index + 1)]);
+    setLegs([...legs.slice(0, index), ...legs.slice(index + 1)]);
   };
   const handleUpdate = (index, data) => {
-    setLegs([...legs.splice(0, index), data, ...legs.splice(index + 1)]);
+    setLegs([...legs.slice(0, index), data, ...legs.slice(index + 1)]);
   };
 
   return (

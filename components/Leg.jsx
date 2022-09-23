@@ -3,7 +3,7 @@ import Options from './Options';
 
 function Leg({ state, setState, handleDelete, handleCopy }) {
   return (
-    <div className='bg-gray-700 p-3 relative'>
+    <div className='bg-gray-700 p-3 relative rounded-xl'>
       <div className='absolute right-0 top-0 flex flex-col -mr-3 -mt-3 space-y-5'>
         <button className='bg-red-500 rounded-full p-2' onClick={handleDelete}>
           <svg
@@ -38,7 +38,7 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
           </svg>
         </button>
       </div>
-      <Options setState={setState} state={state} />
+      {state && <Options state={state} setState={setState} />}
     </div>
   );
 }
