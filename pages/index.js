@@ -128,7 +128,7 @@ function Index() {
                 {showData ? 'Show' : 'Hide'} Data
               </button>
             </div>
-            {!showData && (
+            {showData && (
               <textarea
                 value={JSON.stringify(legs, undefined, 4)}
                 readOnly
