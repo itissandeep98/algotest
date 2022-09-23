@@ -1,9 +1,8 @@
 import Head from 'next/head';
-import Script from 'next/script';
 import React from 'react';
 
-const defaultImage = '/fav.png';
-const AppleIcon = '/apple-touch-icon.png';
+const defaultImage = '/logo/favicon.ico';
+const AppleIcon = '/logo/apple-touch-icon.png';
 
 const Meta = ({ title, keywords, description, url, image, twitter }) => {
   return (
@@ -45,9 +44,11 @@ const Meta = ({ title, keywords, description, url, image, twitter }) => {
 };
 
 Meta.defaultProps = {
-  title: 'Demo Titile',
-  keywords: 'demo',
-  description: 'Demo Description',
+  title: 'AlgoTest',
+  keywords:
+    'trading,free,Trading Strategies,Backtest,strategies,AlgoTest,options trading strategies',
+  description:
+    'AlgoTest lets you backtest options trading strategies for free in India. Backtesting Nifty & Banknifty options strategies for free has never been easier.',
   url: 'https://demo.com/',
   image: defaultImage,
   twitter: '@demo'
