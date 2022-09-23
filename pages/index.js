@@ -16,12 +16,19 @@ const initState = {
   premium: 0,
   lowerRange: 0,
   upperRange: 0,
-  lot: 0
+  lot: 0,
+  simpleMomentum: { type: 'pointsup', value: 0 },
+  profitTarget: { type: 'points', value: 0 },
+  stopLoss: { type: 'points', value: 0 },
+  trailSL: { type: 'points', value1: 0, value2: 0 },
+  rentrytgt: { type: 'reasap', value: 0 },
+  rentrySL: { type: 'reasap', value: 0 }
 };
 
 function Index() {
   const [state, setState] = useState(initState);
   const [show, setShow] = useState(false);
+  const [showData, setShowData] = useState(false);
   const [legs, setLegs] = useState([]);
   const handleAddLeg = () => {
     setLegs([...legs, state]);
@@ -114,6 +121,21 @@ function Index() {
                 />
               ))}
             </div>
+            <div className='text-center'>
+              <button
+                onClick={() => setShowData(!showData)}
+                className='bg-violet-900 px-6 rounded-lg py-2'>
+                {showData ? 'Show' : 'Hide'} Data
+              </button>
+            </div>
+            {!showData && (
+              <textarea
+                value={JSON.stringify(legs, undefined, 4)}
+                readOnly
+                rows={40}
+                className=' my-2 bg-gray-500 text-white p-2 rounded-xl shadow-xl'
+              />
+            )}
           </>
         )}
       </div>

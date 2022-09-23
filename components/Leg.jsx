@@ -1,4 +1,6 @@
 import React from 'react';
+import Dropdown from './Dropdown';
+import Input from './Input';
 import Options from './Options';
 
 function Leg({ state, setState, handleDelete, handleCopy }) {
@@ -39,6 +41,197 @@ function Leg({ state, setState, handleDelete, handleCopy }) {
         </button>
       </div>
       {state && <Options state={state} setState={setState} />}
+      <div className='flex flex-wrap my-6 justify-center space-x-6 gap-5'>
+        <div>
+          <p className='text-xs font-semibold my-1'>Simple Momentum</p>
+          <div className='flex items-center space-x-2'>
+            <Dropdown
+              value={state.simpleMomentum.type}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  simpleMomentum: { ...state.simpleMomentum, type: value }
+                })
+              }
+              options={[
+                { value: 'pointsup', label: 'Points Up' },
+                { value: 'pointsdown', label: 'Points Down' },
+                { value: 'percup', label: 'Percentage Up' },
+                { value: 'percdown', label: 'Percentage Down' },
+                { value: 'unpointsup', label: 'Underlying Points Up' },
+                { value: 'unpointsdown', label: 'Underlying Points Down' },
+                { value: 'unpercup', label: 'Underlying Percentage Up' },
+                { value: 'unpercdown', label: 'Underlying Percentage Down' }
+              ]}
+            />
+            <Input
+              value={state.simpleMomentum.value}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  simpleMomentum: { ...state.simpleMomentum, value: value }
+                })
+              }
+            />
+          </div>
+        </div>
+        <div>
+          <p className='text-xs font-semibold my-1'>Target Profit</p>
+          <div className='flex items-center space-x-2'>
+            <Dropdown
+              value={state.profitTarget.type}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  profitTarget: { ...state.profitTarget, type: value }
+                })
+              }
+              options={[
+                { value: 'points', label: 'Points' },
+                { value: 'perc', label: 'Percentage' },
+                { value: 'unpoints', label: 'Underlying Points' },
+                { value: 'unperc', label: 'Underlying Percentage' }
+              ]}
+            />
+            <Input
+              value={state.profitTarget.value}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  profitTarget: { ...state.profitTarget, value: value }
+                })
+              }
+            />
+          </div>
+        </div>
+        <div>
+          <p className='text-xs font-semibold my-1'>Stop Loss</p>
+          <div className='flex items-center space-x-2'>
+            <Dropdown
+              value={state.stopLoss.type}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  stopLoss: { ...state.stopLoss, type: value }
+                })
+              }
+              options={[
+                { value: 'points', label: 'Points' },
+                { value: 'perc', label: 'Percentage' },
+                { value: 'unpoints', label: 'Underlying Points' },
+                { value: 'unperc', label: 'Underlying Percentage' }
+              ]}
+            />
+            <Input
+              value={state.stopLoss.value}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  stopLoss: { ...state.stopLoss, value: value }
+                })
+              }
+            />
+          </div>
+        </div>
+        <div>
+          <p className='text-xs font-semibold my-1'>Trail SL</p>
+          <div className='flex items-center space-x-2'>
+            <Dropdown
+              value={state.trailSL.type}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  trailSL: { ...state.trailSL, type: value }
+                })
+              }
+              options={[
+                { value: 'points', label: 'Points' },
+                { value: 'perc', label: 'Percentage' }
+              ]}
+            />
+            <Input
+              value={state.trailSL.value1}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  trailSL: { ...state.trailSL, value1: value }
+                })
+              }
+            />
+            <Input
+              value={state.trailSL.value2}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  trailSL: { ...state.trailSL, value2: value }
+                })
+              }
+            />
+          </div>
+        </div>
+        <div>
+          <p className='text-xs font-semibold my-1'>Re-entry on Tgt</p>
+          <div className='flex items-center space-x-2'>
+            <Dropdown
+              value={state.rentrytgt.type}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  rentrytgt: { ...state.rentrytgt, type: value }
+                })
+              }
+              options={[
+                { value: 'reasap', label: 'RE ASAP' },
+                { value: 'reasapback', label: 'RE ASAP BACK' },
+                { value: 'remom', label: 'RE MOMENTUM' },
+                { value: 'remomback', label: 'RE MOMENTUM BACK' },
+                { value: 'recost', label: 'RE COST' },
+                { value: 'recostback', label: 'RE COST BACK' }
+              ]}
+            />
+            <Input
+              value={state.rentrytgt.value}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  rentrytgt: { ...state.rentrytgt, value: value }
+                })
+              }
+            />
+          </div>
+        </div>
+        <div>
+          <p className='text-xs font-semibold my-1'>Re-entry on SL</p>
+          <div className='flex items-center space-x-2'>
+            <Dropdown
+              value={state.rentrySL.type}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  rentrySL: { ...state.rentrySL, type: value }
+                })
+              }
+              options={[
+                { value: 'reasap', label: 'RE ASAP' },
+                { value: 'reasapback', label: 'RE ASAP BACK' },
+                { value: 'remom', label: 'RE MOMENTUM' },
+                { value: 'remomback', label: 'RE MOMENTUM BACK' },
+                { value: 'recost', label: 'RE COST' },
+                { value: 'recostback', label: 'RE COST BACK' }
+              ]}
+            />
+            <Input
+              value={state.rentrySL.value}
+              onChange={(value) =>
+                setState({
+                  ...state,
+                  rentrySL: { ...state.rentrySL, value: value }
+                })
+              }
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
