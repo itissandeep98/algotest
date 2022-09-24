@@ -2,7 +2,16 @@ import classNames from 'classnames';
 import Futures from 'components/Futures';
 import Leg from 'components/Leg';
 import Options from 'components/Options';
-import { useState } from 'react';
+import { firestore } from 'config/firebase';
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  setDoc
+} from 'firebase/firestore';
+import { useEffect, useState } from 'react';
 
 const initState = {
   PositionType: 'SELL',
@@ -27,19 +36,39 @@ function Index() {
   const [show, setShow] = useState(false);
   const [showData, setShowData] = useState(false);
   const [legs, setLegs] = useState([]);
+  let dbInstance = collection(firestore, 'legs');
+
   const handleAddLeg = () => {
-    setLegs([...legs, state]);
-    setState(initState);
+    addDoc(dbInstance, {
+      ...state
+    }).then((docRef) => {
+      setLegs([...legs, { ...state, id: docRef.id }]);
+      setState(initState);
+    });
   };
+
   const handleCopy = (index) => {
     setLegs([...legs.slice(0, index), legs[index], ...legs.slice(index)]);
+    addDoc(dbInstance, {
+      ...legs[index]
+    });
   };
-  const handleDelete = (index) => {
+
+  const handleDelete = async (index) => {
+    await deleteDoc(doc(dbInstance, legs[index].id));
     setLegs([...legs.slice(0, index), ...legs.slice(index + 1)]);
   };
-  const handleUpdate = (index, data) => {
+
+  const handleUpdate = async (index, data) => {
+    await setDoc(doc(dbInstance, legs[index].id), data);
     setLegs([...legs.slice(0, index), data, ...legs.slice(index + 1)]);
   };
+  useEffect(() => {
+    getDocs(dbInstance).then((data) => {
+      setLegs(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className='bg-gray-800 min-h-screen text-white p-10'>
