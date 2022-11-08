@@ -28,7 +28,7 @@ export const getServerSideProps = async ({ req, res }) => {
 	const skipPages = { "/404": true, "/_error": true, "/500": true };
 	const staticPaths = Object.keys(
 		JSON.parse(
-			fs.readFileSync(".next/serverless/pages-manifest.json", {
+			fs.readFileSync(".next/server/pages-manifest.json", {
 				encoding: "utf8",
 			})
 		)
