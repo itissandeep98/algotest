@@ -38,6 +38,10 @@ const Meta = ({ title, keywords, description, url, image, twitter }) => {
         <meta property='og:description' content={description} />
         <meta property='og:image' content={image || defaultImage} />
         <meta property='og:site_name' content={title} />
+        <script
+          async
+          src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7561873529227918'
+          crossOrigin='anonymous'></script>
       </Head>
     </>
   );
